@@ -97,6 +97,7 @@ namespace KrontecDemo.Services
                 ValidateCustomer(customer);
                 _customerRepository.UpdateCustomer(new()
                 {
+                    CustomerId = customer.CustomerId,
                     FirstName = customer.FirstName,
                     LastName = customer.LastName,
                     Address = customer.Address,
