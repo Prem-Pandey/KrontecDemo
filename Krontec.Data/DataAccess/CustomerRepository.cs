@@ -1,62 +1,7 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using KrontecDemo.Models;
-//using Microsoft.EntityFrameworkCore;
-
-
-//namespace KrontecDemo.DataAccess
-//{
-//    public class CustomerRepository : ICustomerRepository
-//    {
-//        private readonly AppDbContext _context;
-
-//        public CustomerRepository(AppDbContext context)
-//        {
-//            _context = context;
-//        }
-
-//        public void AddCustomer(Customer customer)
-//        {
-//            _context.Customers.Add(customer);
-//            _context.SaveChanges();
-//        }
-
-//        public Customer GetCustomer(int customerId)
-//        {
-//            return _context.Customers.FirstOrDefault(c => c.CustomerId == customerId);
-//        }
-
-//        public void UpdateCustomer(Customer customer)
-//        {
-//            _context.Customers.Update(customer);
-//            _context.SaveChanges();
-//        }
-
-//        public void DeleteCustomer(int customerId)
-//        {
-//            var customer = _context.Customers.Find(customerId);
-//            if (customer != null)
-//            {
-//                _context.Customers.Remove(customer);
-//                _context.SaveChanges();
-//            }
-//        }
-
-//        public List<Customer> GetAllCustomers()
-//        {
-//            return _context.Customers.ToList();
-//        }
-//    }
-//}
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using KrontecDemo.Models;
+﻿using Krontec.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace KrontecDemo.DataAccess
+namespace Krontec.Data
 {
     public class CustomerRepository : ICustomerRepository
     {
@@ -76,13 +21,11 @@ namespace KrontecDemo.DataAccess
             }
             catch (DbUpdateException dbEx)
             {
-                // Log the exception (using a logging framework like Serilog, NLog, etc.)
                 Console.WriteLine($"Database update error: {dbEx.Message}");
                 throw new Exception("There was an error while saving the customer. Please try again.");
             }
             catch (Exception ex)
             {
-                // Log the exception
                 Console.WriteLine($"An error occurred: {ex.Message}");
                 throw new Exception("An unexpected error occurred. Please try again later.");
             }

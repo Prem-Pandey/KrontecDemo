@@ -1,7 +1,7 @@
-﻿using KrontecDemo.Models;
+﻿using Krontec.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace KrontecDemo.DataAccess
+namespace Krontec.Data
 {
     public class AppDbContext : DbContext
     {

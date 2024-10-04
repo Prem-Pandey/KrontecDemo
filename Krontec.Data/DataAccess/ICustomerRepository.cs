@@ -1,7 +1,7 @@
-﻿using KrontecDemo.Models;
+﻿using Krontec.Data.Entity;
 
-namespace KrontecDemo.DataAccess
-{
+namespace Krontec.Data
+{ 
     public interface ICustomerRepository
     {
         void AddCustomer(Customer customer);

@@ -1,6 +1,6 @@
-﻿using KrontecDemo.Models;
+﻿using Krontec.Data;
+using KrontecDemo.Models;
 using System.ComponentModel.DataAnnotations;
-using KrontecDemo.DataAccess;
 
 namespace KrontecDemo.Services
 {
@@ -18,7 +18,14 @@ namespace KrontecDemo.Services
             try
             {
                 ValidateCustomer(customer);
-                _customerRepository.AddCustomer(customer);
+                _customerRepository.AddCustomer(new()
+                {
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    Address = customer.Address,
+                    Email = customer.Email,
+                    PhoneNumber = customer.PhoneNumber
+                });
             }
             catch (ValidationException validationEx)
             {
@@ -36,7 +43,16 @@ namespace KrontecDemo.Services
         {
             try
             {
-                return _customerRepository.GetCustomer(id);
+                var customerDB = _customerRepository.GetCustomer(id);
+                return new Customer
+                {
+                    CustomerId = customerDB.CustomerId,
+                    FirstName = customerDB.FirstName,
+                    LastName = customerDB.LastName,
+                    Address = customerDB.Address,
+                    Email = customerDB.Email,
+                    PhoneNumber = customerDB.PhoneNumber
+                };
             }
             catch (Exception ex)
             {
@@ -49,7 +65,23 @@ namespace KrontecDemo.Services
         {
             try
             {
-                return _customerRepository.GetAllCustomers();
+                var customerDB = _customerRepository.GetAllCustomers();
+                List<Customer> result = new List<Customer>();
+                foreach (var customer in customerDB)
+                {
+                    result.Add(new()
+                    {
+
+                        CustomerId = customer.CustomerId,
+                        FirstName = customer.FirstName,
+                        LastName = customer.LastName,
+                        Address = customer.Address,
+                        Email = customer.Email,
+                        PhoneNumber = customer.PhoneNumber
+                    });
+                }
+                return result;
+               
             }
             catch (Exception ex)
             {
@@ -63,7 +95,14 @@ namespace KrontecDemo.Services
             try
             {
                 ValidateCustomer(customer);
-                _customerRepository.UpdateCustomer(customer);
+                _customerRepository.UpdateCustomer(new()
+                {
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    Address = customer.Address,
+                    Email = customer.Email,
+                    PhoneNumber = customer.PhoneNumber
+                });
             }
             catch (ValidationException validationEx)
             {

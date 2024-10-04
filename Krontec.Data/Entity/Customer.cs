@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace KrontecDemo.Models
+namespace Krontec.Data.Entity
 {
     public class Customer
     {

@@ -1,64 +1,6 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-//using KrontecDemo.Models;
-//using KrontecDemo.Services;
-
-//namespace KrontecDemo.Controllers
-//{
-//    [Route("api/[controller]")]
-//    [ApiController]
-//    public class CustomerApiController : ControllerBase
-//    {
-//        private readonly CustomerService _customerService;
-
-//        public CustomerApiController(CustomerService customerService)
-//        {
-//            _customerService = customerService;
-//        }
-
-//        [HttpGet("{id}")]
-//        public IActionResult GetCustomer(int id)
-//        {
-//            var customer = _customerService.GetCustomer(id);
-//            if (customer == null)
-//                return NotFound();
-//            return Ok(customer);
-//        }
-
-//        [HttpPost]
-//        public IActionResult CreateCustomer([FromBody] Customer customer)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                _customerService.AddCustomer(customer);
-//                return Ok(customer);
-//            }
-//            return BadRequest(ModelState);
-//        }
-
-//        [HttpPut]
-//        public IActionResult UpdateCustomer([FromBody] Customer customer)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                _customerService.UpdateCustomer(customer);
-//                return Ok(customer);
-//            }
-//            return BadRequest(ModelState);
-//        }
-
-//        [HttpDelete("{id}")]
-//        public IActionResult DeleteCustomer(int id)
-//        {
-//            _customerService.DeleteCustomer(id);
-//            return Ok();
-//        }
-//    }
-//}
-
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using KrontecDemo.Models;
 using KrontecDemo.Services;
-using Microsoft.Extensions.Logging;
 
 namespace KrontecDemo.Controllers
 {
